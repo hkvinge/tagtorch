@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tagtorch"
+version = "0.1.0"
+requires-python = ">=3.10"
+description = "Tools for analyzing symmetry, equivariance, and topological properties of PyTorch models."
+authors = [
+    { name = "Brendan Kennedy", email = "brendan.kennedy@pnnl.gov" },
+    { name = "Henry Kvinge", email = "henry.kvinge@pnnl.gov" },
+    { name = "Greg Roek", email = "gregory.roek@pnnl.gov" },
+    { name = "Emilie Purvine", email = "emilie.purvine@pnnl.gov" },
+    { name = "Tegan Emerson", email = "tegan.emerson@pnnl.gov" },
+]
+dependencies = [
+    "matplotlib",
+    "numpy<2.0",
+    "scipy",
+    "torch",
+    "torchvision",
+]
+
+[project.optional-dependencies]
+timeout = [
+    "func_timeout",
+]
+topology = [
+    "oat-python>=0.2.0",
+    "ripser>=0.6.14",    
+    "demeter @ git+https://github.com/amezqui3/demeter.git",
+    "tifffile"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["tagtorch*"]
